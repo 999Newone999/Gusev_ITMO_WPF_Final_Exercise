@@ -1,0 +1,65 @@
+﻿<Window x:Class="Gusev_ITMO_WPF_Final_Exercise.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Gusev_ITMO_WPF_Final_Exercise.ViewModels"
+        Title="Калькулятор" Height="415" Width="185">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="textStyle">
+            <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Right"/>
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+            <Setter Property="Control.FontSize" Value="25"/>
+            <Setter Property="Control.Margin" Value="5"/>
+        </Style>
+        <Style x:Key="buttonStyle">
+            <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+            <Setter Property="Control.FontSize" Value="25"/>
+            <Setter Property="Control.Margin" Value="5"/>
+        </Style>
+        <Style x:Key="operationStyle">
+            <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Left"/>
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+            <Setter Property="Control.FontSize" Value="20"/>
+            <Setter Property="Control.Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel Margin="5">
+        <StackPanel Margin="5">
+            <TextBox Text="{Binding Path=Operand2}" Style="{StaticResource textStyle}"
+                      IsReadOnly="True">
+            </TextBox>
+            <Label Content="{Binding Path=Operation}" Style="{StaticResource buttonStyle}"/>
+            <TextBox x:Name="OPerand1" Text="{Binding Path=Operand1}" MaxLength="{Binding Path=OperandStringMaxLength}" Style="{StaticResource textStyle}"
+                KeyUp="TextBox_KeyUp" KeyDown="TextBox_KeyDown" FocusManager.IsFocusScope="True"/>
+            <TextBox Text="{Binding Path=Answer}" Style="{StaticResource textStyle}" IsReadOnly="True"/>
+        </StackPanel>
+        <UniformGrid Rows="5" Columns="4" Style="{StaticResource buttonStyle}">
+            <Button Content="0" Command="{Binding Path=ZeroCommand}"/>
+            <Button Content="C" Command="{Binding Path=ClearCommand}"/>
+            <Button Content="√" Command="{Binding Path=SqrtCommand}"/>
+            <Button Content="/" Command="{Binding Path=DivideCommand}"/>
+            <Button Content="1" Command="{Binding Path=DigitOneCommand}"/>
+            <Button Content="2" Command="{Binding Path=DigitTwoCommand}"/>
+            <Button Content="3" Command="{Binding Path=DigitThreeCommand}"/>
+            <Button Content="*" Command="{Binding Path=MultiplyCommand}"/>
+            <Button Content="4" Command="{Binding Path=DigitFourCommand}"/>
+            <Button Content="5" Command="{Binding Path=DigitFiveCommand}"/>
+            <Button Content="6" Command="{Binding Path=DigitSixCommand}"/>
+            <Button Content="-" Command="{Binding Path=MinusCommand}"/>
+            <Button Content="7" Command="{Binding Path=DigitSevenCommand}"/>
+            <Button Content="8" Command="{Binding Path=DigitEightCommand}"/>
+            <Button Content="9" Command="{Binding Path=DigitNineCommand}"/>
+            <Button Content="+" Command="{Binding Path=PlusCommand}"/>
+            <Button Content="0" Command="{Binding Path=ZeroCommand}"/>
+            <Button Content="1/x" Command="{Binding Path=ReverseXCommand}"/>
+            <Button Content="%" Command="{Binding Path=ProcentCommand}"/>
+            <Button Content="=" Command="{Binding Path=EqualCommand}"/>
+        </UniformGrid>
+    </StackPanel>
+</Window>
